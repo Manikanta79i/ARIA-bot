@@ -52,7 +52,7 @@ curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_HTTPHEADER => [
         "Content-Type: application/json",
-        "X-API-Key: 8154297c75cf418c955ef78e60455b49"
+       "X-API-Key: ".getenv("WAHA_API_KEY")
     ],
     CURLOPT_POSTFIELDS => json_encode($send)
 ]);
@@ -66,7 +66,8 @@ echo "OK";
 // -------- AI FUNCTION --------
 function getAIReply($history)
 {
-    $apiKey = "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";
+   $apiKey = getenv("GROQ_API_KEY");
+
 
     $messages = array_merge(
         [[
@@ -101,3 +102,4 @@ function getAIReply($history)
     return $json['choices'][0]['message']['content']
         ?? "Hmm… can you explain a bit more?";
 }
+
