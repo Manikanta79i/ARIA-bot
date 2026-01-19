@@ -1,6 +1,6 @@
 FROM devlikeapro/waha:latest
 
-# Install PHP + Apache
+# Install Apache + PHP
 RUN apt-get update && \
     apt-get install -y apache2 php libapache2-mod-php php-curl && \
     rm -rf /var/lib/apt/lists/*
